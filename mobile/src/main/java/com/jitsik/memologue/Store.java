@@ -57,6 +57,11 @@ public class Store {
         return singleton;
     }
 
+    public void clearLog() {
+        log.clear();
+        logAdapter.notifyDataSetChanged();
+    }
+
     public long addTask(Task t) {
         StoredTask st = new StoredTask(t);
         tasks.add(0, st);

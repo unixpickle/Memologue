@@ -1,5 +1,6 @@
 package com.jitsik.memologue;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +19,21 @@ public class BacklogActivity extends ActionBarActivity {
 
         ListView v = (ListView)findViewById(R.id.log_list);
         v.setAdapter(Store.getStore().getLogAdapter());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_backlog, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Store store = Store.getStore();
+        store.clearLog();
+        store.save();
+        return super.onOptionsItemSelected(item);
     }
 
 }
