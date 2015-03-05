@@ -37,10 +37,6 @@ public class ElapsedLabel extends TextView {
         init();
     }
 
-    public Date getDate() {
-        return date;
-    }
-
     public void setDate(Date d) {
         this.date = d;
 
@@ -104,7 +100,6 @@ public class ElapsedLabel extends TextView {
         long difference = (new Date().getTime() - date.getTime()) / 1000;
         if (difference < 60) {
             setText("A moment ago");
-            return;
         } else if (difference < 60 * 60) {
             long minutes = difference / 60;
             setText(minutes + " minute" + (minutes == 1 ? "" : "s") + " ago");

@@ -10,11 +10,13 @@
     <TextView android:id="@+id/task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/task_name_color" />
 
     <TextView android:id="@+id/task_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/task_name" />
+        android:layout_below="@id/task_name"
+        android:textColor="@color/task_time_color" />
 
 </RelativeLayout>
