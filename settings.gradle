@@ -1,1 +1,1 @@
-include ':mobile', ':wear', ':pagerslidingtabstrip'
+include ':mobile', ':wear'

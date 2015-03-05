@@ -1,30 +1,40 @@
 package com.jitsik.memologue;
 
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.astuetz.PagerSlidingTabStrip;
 
-public class Dashboard extends FragmentActivity {
-
-    DashboardPages adapter;
-    ViewPager pager;
+public class Dashboard extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        adapter = new DashboardPages(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        pager = (ViewPager)findViewById(R.id.pager);
-        pager.setAdapter(adapter);
-
-        // Bind the tabs to the ViewPager
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip)findViewById(R.id.tabs);
-        tabs.setViewPager(pager);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.action_add:
+            break;
+        case R.id.action_log:
+            break;
+        case R.id.action_settings:
+            break;
+        default:
+            break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
