@@ -3,12 +3,9 @@ package com.jitsik.memologue;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.view.Window;
 import android.widget.TextView;
 
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;

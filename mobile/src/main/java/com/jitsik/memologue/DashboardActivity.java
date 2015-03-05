@@ -1,5 +1,7 @@
 package com.jitsik.memologue;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -26,6 +28,13 @@ public class DashboardActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> p, View v, int i, long id) {
                 handleClicked(id);
+            }
+        });
+        v.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> p, View v, int i, long id) {
+                handleDeletion(id);
+                return true;
             }
         });
     }
@@ -57,6 +66,19 @@ public class DashboardActivity extends ActionBarActivity {
 
     public void handleClicked(long id) {
         TaskStore.getTaskStore().didTask(id);
+    }
+
+    public void handleDeletion(final long id) {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Delete task");
+        b.setMessage("Are you sure you want to delete this task?");
+        b.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                TaskStore.getTaskStore().remove(id);
+            }
+        });
+        b.setNegativeButton(android.R.string.no, null);
+        b.show();
     }
 
 }

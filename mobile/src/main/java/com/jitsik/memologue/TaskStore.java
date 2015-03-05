@@ -47,8 +47,14 @@ public class TaskStore extends BaseAdapter {
     public void didTask(long id) {
         for (int i = 0; i < tasks.size(); ++i) {
             if (tasks.get(i).identifier == id) {
-                StoredTask t = new StoredTask(tasks.get(i).task.taskByDoing());
-                tasks.set(i, t);
+                Task t = tasks.get(i).task;
+                if (t.getPeriod() >= 0) {
+                    StoredTask s = new StoredTask(tasks.get(i).task.taskByDoing());
+                    tasks.set(i, s);
+                } else {
+                    tasks.remove(i);
+                }
+                LogStore.getLogStore().addEntry(t.getName());
                 notifyDataSetChanged();
                 break;
             }
