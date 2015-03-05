@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Backlog"
+            android:label="@string/title_activity_backlog" >
+        </activity>
+        <activity
+            android:name=".Add"
+            android:label="@string/title_activity_add" >
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>
