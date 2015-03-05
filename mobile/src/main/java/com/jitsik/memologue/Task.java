@@ -8,33 +8,33 @@ import java.util.Date;
 public class Task {
 
     private String name;
-    private long period;
     private Date lastDone;
-    private boolean notify;
+    private long notifyPeriod;
+    private boolean repeating;
     private int timesDone = 0;
 
-    public Task(String name, long period, Date lastDone, boolean notify, int timesDone) {
+    public Task(String name, long notifyPeriod, Date lastDone, boolean repeating, int timesDone) {
         this.name = name;
-        this.period = period;
+        this.notifyPeriod = notifyPeriod;
         this.lastDone = lastDone;
-        this.notify = notify;
+        this.repeating = repeating;
         this.timesDone = timesDone;
-    }
-
-    public Date getLastDone() {
-        return lastDone;
     }
 
     public String getName() {
         return name;
     }
 
-    public long getPeriod() {
-        return period;
+    public Date getLastDone() {
+        return lastDone;
     }
 
-    public boolean getNotify() {
-        return notify;
+    public long getNotifyPeriod() {
+        return notifyPeriod;
+    }
+
+    public boolean getRepeating() {
+        return repeating;
     }
 
     public int getTimesDone() {
@@ -42,7 +42,7 @@ public class Task {
     }
 
     public Task taskByDoing() {
-        return new Task(name, period, new Date(), notify, timesDone + 1);
+        return new Task(name, notifyPeriod, lastDone, repeating, timesDone + 1);
     }
 
 }

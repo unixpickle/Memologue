@@ -14,8 +14,8 @@ import java.util.Date;
 public class AddActivity extends ActionBarActivity {
 
     private EditText name;
-    private CheckBox periodic;
-    private CheckBox important;
+    private CheckBox repeating;
+    private CheckBox notify;
     private View periodView;
     private NumberPicker[] periodPickers;
 
@@ -25,8 +25,8 @@ public class AddActivity extends ActionBarActivity {
         setContentView(R.layout.activity_add);
 
         name = (EditText)findViewById(R.id.name);
-        periodic = (CheckBox)findViewById(R.id.periodic);
-        important = (CheckBox)findViewById(R.id.important);
+        repeating = (CheckBox)findViewById(R.id.repeating);
+        notify = (CheckBox)findViewById(R.id.notify);
         periodView = findViewById(R.id.period_view);
 
         periodPickers = new NumberPicker[3];
@@ -39,25 +39,24 @@ public class AddActivity extends ActionBarActivity {
         periodPickers[0].setMaxValue(365);
         periodPickers[1].setMaxValue(23);
         periodPickers[2].setMaxValue(59);
+        periodPickers[0].setValue(1);
 
-        periodic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        notify.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton b, boolean c) {
                 if (c) {
-                    showPeriodicInfo();
+                    showTimePicker();
                 } else {
-                    hidePeriodicInfo();
+                    hideTimePicker();
                 }
             }
         });
     }
 
-    private void hidePeriodicInfo() {
-        important.setVisibility(View.GONE);
+    private void hideTimePicker() {
         periodView.setVisibility(View.GONE);
     }
 
-    private void showPeriodicInfo() {
-        important.setVisibility(View.VISIBLE);
+    private void showTimePicker() {
         periodView.setVisibility(View.VISIBLE);
     }
 
@@ -67,15 +66,15 @@ public class AddActivity extends ActionBarActivity {
         String nameStr = name.getText().toString();
         long period = -1;
         Date lastDone = new Date();
-        boolean notify = periodic.isChecked() && important.isChecked();
+        boolean rep = repeating.isChecked();
 
-        if (periodic.isChecked()) {
+        if (notify.isChecked()) {
             period = (long)periodPickers[2].getValue() * 60 +
                     (long)periodPickers[1].getValue() * 60 * 60 +
                     (long)periodPickers[2].getValue() * 60 * 60 * 24;
         }
 
-        TaskStore.getTaskStore().add(new Task(nameStr, period, lastDone, notify, 0));
+        TaskStore.getTaskStore().add(new Task(nameStr, period, lastDone, rep, 0));
         finish();
     }
 

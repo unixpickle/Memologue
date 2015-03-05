@@ -7,10 +7,10 @@
     <string name="app_name">Memologue</string>
     <string name="hint_days">Days</string>
     <string name="hint_hours">Hours</string>
-    <string name="hint_important">Remind me to do this</string>
     <string name="hint_minutes">Minutes</string>
     <string name="hint_name">Task name</string>
-    <string name="hint_periodic">I do this periodically</string>
+    <string name="hint_notify">Remind me to do this</string>
+    <string name="hint_repeating">I will do this more than once</string>
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_backlog">Backlog</string>
     <string name="title_activity_add">Add</string>

@@ -48,7 +48,7 @@ public class TaskStore extends BaseAdapter {
         for (int i = 0; i < tasks.size(); ++i) {
             if (tasks.get(i).identifier == id) {
                 Task t = tasks.get(i).task;
-                if (t.getPeriod() >= 0) {
+                if (t.getRepeating()) {
                     StoredTask s = new StoredTask(tasks.get(i).task.taskByDoing());
                     tasks.set(i, s);
                 } else {
