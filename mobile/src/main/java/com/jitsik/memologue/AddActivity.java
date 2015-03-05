@@ -2,8 +2,6 @@ package com.jitsik.memologue;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -13,7 +11,7 @@ import android.widget.NumberPicker;
 import java.util.Date;
 
 
-public class Add extends ActionBarActivity {
+public class AddActivity extends ActionBarActivity {
 
     private EditText name;
     private CheckBox periodic;
@@ -65,19 +63,19 @@ public class Add extends ActionBarActivity {
 
     public void addTask(View v) {
         // Generate a Task and add it to the DataStore.
-        Task t = DataStore.getDataStore().createTask();
-        t.setName(name.getText().toString());
-        t.setLastDone(new Date());
+
+        String nameStr = name.getText().toString();
+        long period = -1;
+        Date lastDone = new Date();
+        boolean notify = periodic.isChecked() && important.isChecked();
+
         if (periodic.isChecked()) {
-            long period = (long)periodPickers[2].getValue() * 60 +
+            period = (long)periodPickers[2].getValue() * 60 +
                     (long)periodPickers[1].getValue() * 60 * 60 +
                     (long)periodPickers[2].getValue() * 60 * 60 * 24;
-            t.setPeriod(period);
-        } else {
-            t.setPeriod(-1);
         }
-        t.setNotify(periodic.isChecked() && important.isChecked());
-        DataStore.getDataStore().addTask(t);
+
+        TaskStore.getTaskStore().add(new Task(nameStr, period, lastDone, notify, 0));
         finish();
     }
 

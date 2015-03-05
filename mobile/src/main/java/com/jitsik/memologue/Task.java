@@ -11,54 +11,38 @@ public class Task {
     private long period;
     private Date lastDone;
     private boolean notify;
-    private long identifier;
     private int timesDone = 0;
 
-    public Task(long id) {
-        identifier = id;
+    public Task(String name, long period, Date lastDone, boolean notify, int timesDone) {
+        this.name = name;
+        this.period = period;
+        this.lastDone = lastDone;
+        this.notify = notify;
+        this.timesDone = timesDone;
     }
 
     public Date getLastDone() {
         return lastDone;
     }
 
-    public void setLastDone(Date lastDone) {
-        this.lastDone = lastDone;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public long getPeriod() {
         return period;
     }
 
-    public void setPeriod(long period) {
-        this.period = period;
-    }
-
     public boolean getNotify() {
         return notify;
-    }
-
-    public void setNotify(boolean notify) {
-        this.notify = notify;
-    }
-
-    public long getIdentifier() {
-        return identifier;
     }
 
     public int getTimesDone() {
         return timesDone;
     }
 
-    public void setTimesDone(int timesDone) {
-        this.timesDone = timesDone;
+    public Task taskByDoing() {
+        return new Task(name, period, new Date(), notify, timesDone + 1);
     }
+
 }

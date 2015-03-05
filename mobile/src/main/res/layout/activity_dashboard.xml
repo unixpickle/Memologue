@@ -3,4 +3,4 @@
     android:id="@+id/dashboard_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jitsik.memologue.Dashboard" />
+    tools:context="com.jitsik.memologue.DashboardActivity" />

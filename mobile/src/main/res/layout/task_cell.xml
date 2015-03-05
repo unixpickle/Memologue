@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="25dp" />
 
-    <TextView android:id="@+id/last_done"
+    <com.jitsik.memologue.ElapsedLabel android:id="@+id/elapsed_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/task_name" />
