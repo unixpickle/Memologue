@@ -19,10 +19,11 @@ public class DashboardActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        TaskStore.getTaskStore().setInflater(getLayoutInflater());
+        TaskStore store = TaskStore.getTaskStore(getApplicationContext());
+        store.setInflater(getLayoutInflater());
 
         ListView v = (ListView)findViewById(R.id.dashboard_list);
-        v.setAdapter(TaskStore.getTaskStore());
+        v.setAdapter(store);
 
         v.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,8 +65,15 @@ public class DashboardActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        TaskStore.getTaskStore(getApplicationContext()).save();
+        LogStore.getLogStore(getApplicationContext()).save();
+    }
+
     public void handleClicked(long id) {
-        TaskStore.getTaskStore().didTask(id);
+        TaskStore.getTaskStore(getApplicationContext()).didTask(id);
     }
 
     public void handleDeletion(final long id) {
@@ -74,7 +82,7 @@ public class DashboardActivity extends ActionBarActivity {
         b.setMessage("Are you sure you want to delete this task?");
         b.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                TaskStore.getTaskStore().remove(id);
+                TaskStore.getTaskStore(getApplicationContext()).remove(id);
             }
         });
         b.setNegativeButton(android.R.string.no, null);

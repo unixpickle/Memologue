@@ -42,7 +42,7 @@ public class Task {
     }
 
     public Task taskByDoing() {
-        return new Task(name, notifyPeriod, lastDone, repeating, timesDone + 1);
+        return new Task(name, notifyPeriod, new Date(), repeating, timesDone + 1);
     }
 
 }

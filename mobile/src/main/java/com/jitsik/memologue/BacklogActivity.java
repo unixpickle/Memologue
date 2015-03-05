@@ -16,10 +16,11 @@ public class BacklogActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_backlog);
 
-        LogStore.getLogStore().setInflater(getLayoutInflater());
+        LogStore store = LogStore.getLogStore(getApplicationContext());
+        store.setInflater(getLayoutInflater());
 
         ListView v = (ListView)findViewById(R.id.log_list);
-        v.setAdapter(LogStore.getLogStore());
+        v.setAdapter(store);
     }
 
 }

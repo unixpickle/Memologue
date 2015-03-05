@@ -74,7 +74,9 @@ public class AddActivity extends ActionBarActivity {
                     (long)periodPickers[2].getValue() * 60 * 60 * 24;
         }
 
-        TaskStore.getTaskStore().add(new Task(nameStr, period, lastDone, rep, 0));
+        TaskStore store = TaskStore.getTaskStore(getApplicationContext());
+        store.add(new Task(nameStr, period, lastDone, rep, 0));
+        store.save();
         finish();
     }
 
