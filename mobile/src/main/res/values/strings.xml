@@ -6,15 +6,19 @@
     <string name="action_log">View Backlog</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">Memologue</string>
+    <string name="bad_date">The date was invalid</string>
+    <string name="done">Done</string>
     <string name="hint_days">Days</string>
     <string name="hint_hours">Hours</string>
     <string name="hint_minutes">Minutes</string>
     <string name="hint_name">Task name</string>
     <string name="hint_notify">Remind me to do this</string>
     <string name="hint_repeating">I will do this more than once</string>
+    <string name="ok">OK</string>
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_backlog">Backlog</string>
     <string name="title_activity_add">Add</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_do">Do a Task</string>
 
 </resources>

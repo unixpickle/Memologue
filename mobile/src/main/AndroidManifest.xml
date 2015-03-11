@@ -28,6 +28,10 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name=".DoActivity"
+            android:label="@string/title_activity_do" >
+        </activity>
     </application>
 
 </manifest>

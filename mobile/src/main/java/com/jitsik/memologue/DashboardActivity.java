@@ -71,7 +71,9 @@ public class DashboardActivity extends ActionBarActivity {
     }
 
     public void handleClicked(long id) {
-        Store.getStore().didTask(id);
+        Intent i = new Intent(this, DoActivity.class);
+        i.putExtra(DoActivity.TASK_ID, id);
+        this.startActivity(i);
     }
 
     public void handleDeletion(final long id) {

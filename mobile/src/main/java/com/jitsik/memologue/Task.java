@@ -41,8 +41,8 @@ public class Task {
         return timesDone;
     }
 
-    public Task taskByDoing() {
-        return new Task(name, notifyPeriod, new Date(), repeating, timesDone + 1);
+    public Task taskByDoing(Date date) {
+        return new Task(name, notifyPeriod, date, repeating, timesDone + 1);
     }
 
 }

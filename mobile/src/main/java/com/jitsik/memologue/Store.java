@@ -69,17 +69,17 @@ public class Store {
         return st.identifier;
     }
 
-    public void didTask(long id) {
+    public void didTask(long id, Date date) {
         for (int i = 0; i < tasks.size(); ++i) {
             if (tasks.get(i).identifier == id) {
                 Task t = tasks.get(i).task;
                 if (t.getRepeating()) {
-                    StoredTask s = new StoredTask(tasks.get(i).task.taskByDoing());
+                    StoredTask s = new StoredTask(tasks.get(i).task.taskByDoing(date));
                     tasks.set(i, s);
                 } else {
                     tasks.remove(i);
                 }
-                log.add(new LogEntry(t.getName(), new Date()));
+                log.add(new LogEntry(t.getName(), date));
                 tasksAdapter.notifyDataSetChanged();
                 logAdapter.notifyDataSetChanged();
                 break;
